@@ -75,6 +75,26 @@ namespace ChallengeQU.Tests
         }
 
         [TestMethod]
+        public void FindWordsTwoRepetitionsWord()
+        {
+            var wordFinder = new WordFinder(["chill", "rgwio", "chill", "pqnsd", "uvdxy"]);
+
+            var result = wordFinder.Find(["cold", "wind", "snow", "chill"]);
+
+            CollectionAssert.AreEqual(new[] { "CHILL", "WIND" }, result.ToArray());
+        }
+
+        [TestMethod]
+        public void FindWordsParallelTwoRepetitionsWord()
+        {
+            var wordFinder = new WordFinderParallel(["chill", "rgwio", "chill", "pqnsd", "uvdxy"]);
+
+            var result = wordFinder.Find(["cold", "wind", "snow", "chill"]);
+
+            CollectionAssert.AreEqual(new[] { "CHILL", "WIND" }, result.ToArray());
+        }
+
+        [TestMethod]
         [DataRow(null)]
         [DataRow([])]
         [DataRow([null])]

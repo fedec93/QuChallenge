@@ -34,20 +34,29 @@ namespace ChallengeQU
 
             Run<WordFinder>(list, words);
             Run<WordFinderParallel>(list, words);
-            Console.WriteLine();
         }
 
         public static void Run<T>(List<string> list, List<string> words) where T : IWordFinder
         {
             var sw = Stopwatch.StartNew();
 
-            var wordFinder = (T)Activator.CreateInstance(typeof(T), list);
+            var wordFinderType = typeof(T);
+            var wordFinderTypeName = wordFinderType.Name;
 
-            Console.WriteLine($"GENERATE MATRIX {typeof(T)}: {sw.ElapsedMilliseconds} ms");
+            var wordFinder = (T)Activator.CreateInstance(wordFinderType, list);
+
+            Console.WriteLine($"GENERATE MATRIX '{wordFinderTypeName}': {sw.ElapsedMilliseconds} ms");
 
             var result = wordFinder.Find(words);
 
-            Console.WriteLine($"FINISH FINDINGS {typeof(T)}: {sw.ElapsedMilliseconds} ms");
+            Console.WriteLine($"FINISH FINDINGS '{wordFinderTypeName}': {sw.ElapsedMilliseconds} ms");
+
+            foreach (var word in result)
+            {
+                Console.WriteLine(word);
+            }
+
+            Console.WriteLine();
         }
 
 

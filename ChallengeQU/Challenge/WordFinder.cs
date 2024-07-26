@@ -57,8 +57,16 @@
                 }
             }
 
+            return GetResults(wordCounter);
+        }
+
+        protected IEnumerable<string> GetResults(IDictionary<string, int> wordCounter)
+        {
+            // Order the results by the most repeated word to the less repeated.
+            // If two words appear the same number of times, order alphabetically
             return wordCounter
                 .OrderByDescending(x => x.Value)
+                .ThenBy(x => x.Key)
                 .Take(10)
                 .Select(x => x.Key);
         }

@@ -27,10 +27,7 @@ namespace ChallengeQU.Challenge
                 }
             });
 
-            return wordCounter
-                .OrderByDescending(x => x.Value)
-                .Take(10)
-                .Select(x => x.Key);
+            return GetResults(wordCounter);
         }
     }
 }
