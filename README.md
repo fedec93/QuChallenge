@@ -13,7 +13,7 @@ Developer Challenge - Word Finder
 ## Features
 
 - Console app with some settings to generate a random matrix and run the Word Finder tool.
-- WordFinder and WordFinderParallel to compare single vs multi-thread lookup.
+- WordFinder and WordFinderParallel implementations to compare single vs multi-thread lookup.
 - Unit Tests
 - Benchmarks
 
